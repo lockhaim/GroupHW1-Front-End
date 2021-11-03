@@ -52,7 +52,7 @@ const App = () => {
                     Model: <input type='text' onChange={handleNewModelChange}></input><br/>
                     Image: <input type='text' onChange={handleNewImgChange}></input><br/>
                     Sold: <input type='checkbox' onChange={handleNewSoldChange}></input><br/>
-                    <input type='submit' value='Submit'></input>
+                    <input type='submit' value='Add New Car'></input>
                 </form>
             </section>
             <section>
@@ -60,10 +60,10 @@ const App = () => {
                 {
                     cars.map((car)=>{
                         return <div>
-                            <h4>{
-                                car.make
-                            }</h4>
-
+                            <h4>{car.make}</h4>
+                            <h4>{car.model}</h4>
+                            <h4>{car.img}</h4>
+                            <h4>{car.sold}</h4>
                         </div>
                     })
                 }
