@@ -31,7 +31,14 @@ const App = () => {
                 img:newCarImg,
                 sold:newCarSold
             }
-        )
+        ).then(() => {
+          axios
+            .get('http://localhost:3000/cars')
+            .then((response) => {
+              setCars(response.data)
+            })
+        })
+        event.currentTarget.reset()
     }
 
     useEffect(() => {
