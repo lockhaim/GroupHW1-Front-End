@@ -62,7 +62,7 @@ const App = () => {
     }
 
 // Button to reveal the EDIT Form
-const showEditForm = () => {
+const showEditForm = (carData) => {
   let showForm = document.getElementById(`show-edit-car`)
   if (getComputedStyle(showForm, null).display === "none") {
       showForm.style.display = "block";
@@ -103,7 +103,7 @@ const handleUpdateCar = (carData, event) => {
                   Model: <input type='text' onChange={handleNewModelChange}/><br/>
                   Image: <input type='text' onChange={handleNewImgChange}/><br/>
                   <input type='checkbox' onChange={handleNewSoldChange} hidden/>
-                  <input type='submit' value='Add New Car'/>
+                  <input className="button" type='submit' value='Add New Car'/>
                 </form>
             </section>
 
@@ -125,20 +125,20 @@ const handleUpdateCar = (carData, event) => {
                           }}>Buy Car</button>
                       }<br/>
 
-                      <button onClick={() => {
-                        {showEditForm(cars.indexOf(car))}
-                      }}>Edit</button>
+                      <button onClick={ (event) =>
+                        { showEditForm(car._id) }
+                      }>Edit</button>
 
                       <div id="show-edit-car">
                           <h3>Edit Car</h3>
                           <form onSubmit={event => {
                             event.preventDefault()
-                            handleUpdateCar(car, event)}}>
+                            handleUpdateCar(car, event)}} key={car._id}>
                             Make: <input type='text' onChange={handleNewMakeChange}/><br/>
                             Model: <input type='text' onChange={handleNewModelChange}/><br/>
                             Image: <input type='text' onChange={handleNewImgChange}/><br/>
                             Sold Out? <input type='checkbox' onChange={handleNewSoldChange}/>
-                            <input type='submit' value="Confirm Edit"/>
+                            <input className="button" type='submit' value="Confirm Edit"/>
                           </form>
                       </div>
 

@@ -20,6 +20,7 @@ code {
   display: block;
   width: 30%;
   border: 1px solid grey;
+  border-radius: 15px;
   margin: 10px;
   flex-wrap: wrap;
 }
@@ -33,4 +34,9 @@ code {
 
 #show-edit-car {
   display: none;
+}
+
+button, .button {
+  margin: 5px 10px 10px 0;
+  border-radius: 5px;
 }
