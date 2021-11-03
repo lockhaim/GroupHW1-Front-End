@@ -92,14 +92,14 @@ const showEditForm = (item) => {
 }
 
 // Update/Edit handler
-const handleUpdateCar = (carData) => {
+const handleUpdateCar = (carData, event) => {
     axios.put(
         `http://localhost:3000/cars/${carData._id}`,
         {
-          make: newCarMake || carData.make,
-          model: carData.model,
-          img: carData.img,
-          sold: carData.sold
+          make:newCarMake,
+          model:newCarModel,
+          img:newCarImg,
+          sold:newCarSold
         }
     ).then(() => {
       axios
@@ -148,7 +148,9 @@ const handleUpdateCar = (carData) => {
 
                       <div id="show-edit-car">
                           <h3>Edit Car</h3>
-                          <form onSubmit={handleUpdateCar(car._id)}>
+                          <form onSubmit={event => {
+                            event.preventDefault()
+                            handleUpdateCar(car, event)}}>
                             Make: <input type='text' onChange={handleNewMakeChange}/><br/>
                             Model: <input type='text' onChange={handleNewModelChange}/><br/>
                             Image: <input type='text' onChange={handleNewImgChange}/><br/>
