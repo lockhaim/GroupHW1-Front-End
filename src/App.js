@@ -92,7 +92,6 @@ const handleUpdateCar = (carData, event) => {
     showEditForm()
 }
 
-
     return (
         <div>
             <h1>Cars Index</h1>
