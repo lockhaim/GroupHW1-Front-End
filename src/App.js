@@ -2,11 +2,11 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 
 const App = () => {
-    const [cars, setCars] = useState([])
     const [newCarMake, setNewCarMake] = useState('')
     const [newCarModel, setNewCarModel] = useState('')
     const [newCarImg, setNewCarImg] = useState('')
     const [newCarSold, setNewCarSold] = useState(false)
+    const [cars, setCars] = useState([])
 
     //handlers
     const handleNewMakeChange = (event) => {
@@ -51,7 +51,7 @@ const App = () => {
                     Make: <input type='text' onChange={handleNewMakeChange}/><br/>
                     Model: <input type='text' onChange={handleNewModelChange}/><br/>
                     Image: <input type='text' onChange={handleNewImgChange}/><br/>
-                    Sold: <input type='checkbox' onChange={handleNewSoldChange}/><br/>
+                    <input type='checkbox' onChange={handleNewSoldChange} hidden/>
                     <input type='submit' value='Add New Car'/>
                 </form>
             </section>
@@ -61,8 +61,8 @@ const App = () => {
                 {
                     cars.map((car)=>{
                       return <div className="car-display">
-                        <h4>{car.make}</h4>
-                        <h4>{car.model}</h4>
+                        <h4>Make: {car.make}</h4>
+                        <h4>Model: {car.model}</h4>
                         <img src={car.img} alt=""/>
                       </div>
                     })
