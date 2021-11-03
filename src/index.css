@@ -18,7 +18,7 @@ code {
 
 .car-display {
   display: block;
-  width: 250px;
+  width: 30%;
   border: 1px solid grey;
   margin: 10px;
   flex-wrap: wrap;
@@ -26,4 +26,7 @@ code {
 
 .car-display img {
   width: 94%
+}
+.sold-out {
+  color: grey;
 }
