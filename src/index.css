@@ -28,5 +28,9 @@ code {
   width: 94%
 }
 .sold-out {
-  color: grey;
+  color: red;
+}
+
+#show-edit-car {
+  display: none;
 }

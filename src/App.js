@@ -61,6 +61,57 @@ const App = () => {
         })
     }
 
+  // Toggle handler
+//   const showEditForm = (carData) => {
+//   axios
+//   .put(
+//     `http://localhost:3000/cars/${carData._id}`,
+//     {
+//       make: carData.make,
+//       model:  carData.model,
+//       img:  carData.img,
+//       sold:  carData.sold
+//     }
+//   ).then((response) => {
+//     axios
+//       .get('http://localhost:3000/cars')
+//       .then((response) => {
+//         setCars(response.data)
+//       })
+//   })
+// }
+
+// Button to reveal the EDIT Form
+const showEditForm = (item) => {
+  let showForm = document.getElementById("show-edit-car")
+  if (getComputedStyle(showForm, null).display === "none") {
+      showForm.style.display = "block";
+    } else {
+      showForm.style.display = "none";
+    }
+}
+
+// Update/Edit handler
+const handleUpdateCar = (carData) => {
+    axios.put(
+        `http://localhost:3000/cars/${carData._id}`,
+        {
+          make: newCarMake || carData.make,
+          model: carData.model,
+          img: carData.img,
+          sold: carData.sold
+        }
+    ).then(() => {
+      axios
+        .get('http://localhost:3000/cars')
+        .then((response) => {
+          setCars(response.data)
+        })
+    })
+    // event.currentTarget.reset()
+}
+
+
     return (
         <div>
             <h1>Cars Index</h1>
@@ -74,6 +125,7 @@ const App = () => {
                   <input type='submit' value='Add New Car'/>
                 </form>
             </section>
+
             <section>
                 <h2>Cars</h2>
                 <div className="car-container">
@@ -85,12 +137,26 @@ const App = () => {
                       <img src={car.img} alt=""/>
                       {
                         (car.sold)?
-                          <h5 className="sold-out">Sold Out</h5>
+                          <h6 className="sold-out">Sold Out</h6>
                           :
                           <button onClick={() => {
-                  handleCarDelete(car)
-                }}>Buy Car</button>
-                      }
+                            handleCarDelete(car)
+                          }}>Buy Car</button>
+                      }<br/>
+
+                      <button onClick={showEditForm}>Edit</button>
+
+                      <div id="show-edit-car">
+                          <h3>Edit Car</h3>
+                          <form onSubmit={handleUpdateCar(car._id)}>
+                            Make: <input type='text' onChange={handleNewMakeChange}/><br/>
+                            Model: <input type='text' onChange={handleNewModelChange}/><br/>
+                            Image: <input type='text' onChange={handleNewImgChange}/><br/>
+                            Sold Out? <input type='checkbox' onChange={handleNewSoldChange}/>
+                            <input type='submit' value="Confirm Edit"/>
+                          </form>
+                      </div>
+
                     </div>
                   })
                 }
