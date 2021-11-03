@@ -48,25 +48,26 @@ const App = () => {
             <section>
                 <h2>Add New Car</h2>
                 <form onSubmit={handleNewCarFormSubmit}>
-                    Make: <input type='text' onChange={handleNewMakeChange}></input><br/>
-                    Model: <input type='text' onChange={handleNewModelChange}></input><br/>
-                    Image: <input type='text' onChange={handleNewImgChange}></input><br/>
-                    Sold: <input type='checkbox' onChange={handleNewSoldChange}></input><br/>
-                    <input type='submit' value='Add New Car'></input>
+                    Make: <input type='text' onChange={handleNewMakeChange}/><br/>
+                    Model: <input type='text' onChange={handleNewModelChange}/><br/>
+                    Image: <input type='text' onChange={handleNewImgChange}/><br/>
+                    Sold: <input type='checkbox' onChange={handleNewSoldChange}/><br/>
+                    <input type='submit' value='Add New Car'/>
                 </form>
             </section>
             <section>
                 <h2>Cars</h2>
+                <div className="car-container">
                 {
                     cars.map((car)=>{
-                        return <div>
-                            <h4>{car.make}</h4>
-                            <h4>{car.model}</h4>
-                            <h4>{car.img}</h4>
-                            <h4>{car.sold}</h4>
-                        </div>
+                      return <div className="car-display">
+                        <h4>{car.make}</h4>
+                        <h4>{car.model}</h4>
+                        <img src={car.img} alt=""/>
+                      </div>
                     })
                 }
+                </div>
             </section>
         </div>
     )
