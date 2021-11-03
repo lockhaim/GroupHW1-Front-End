@@ -61,29 +61,9 @@ const App = () => {
         })
     }
 
-  // Toggle handler
-//   const showEditForm = (carData) => {
-//   axios
-//   .put(
-//     `http://localhost:3000/cars/${carData._id}`,
-//     {
-//       make: carData.make,
-//       model:  carData.model,
-//       img:  carData.img,
-//       sold:  carData.sold
-//     }
-//   ).then((response) => {
-//     axios
-//       .get('http://localhost:3000/cars')
-//       .then((response) => {
-//         setCars(response.data)
-//       })
-//   })
-// }
-
 // Button to reveal the EDIT Form
-const showEditForm = (item) => {
-  let showForm = document.getElementById("show-edit-car")
+const showEditForm = () => {
+  let showForm = document.getElementById(`show-edit-car`)
   if (getComputedStyle(showForm, null).display === "none") {
       showForm.style.display = "block";
     } else {
@@ -108,7 +88,8 @@ const handleUpdateCar = (carData, event) => {
           setCars(response.data)
         })
     })
-    // event.currentTarget.reset()
+    event.currentTarget.reset()
+    showEditForm()
 }
 
 
@@ -144,7 +125,9 @@ const handleUpdateCar = (carData, event) => {
                           }}>Buy Car</button>
                       }<br/>
 
-                      <button onClick={showEditForm}>Edit</button>
+                      <button onClick={() => {
+                        {showEditForm(cars.indexOf(car))}
+                      }}>Edit</button>
 
                       <div id="show-edit-car">
                           <h3>Edit Car</h3>
@@ -167,5 +150,7 @@ const handleUpdateCar = (carData, event) => {
         </div>
     )
 }
+
+// Reference: Edit Form (onsubmit) develeted with the help of what Chaz presented in class on w8d2
 
 export default App;
