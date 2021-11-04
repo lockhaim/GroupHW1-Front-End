@@ -8,7 +8,7 @@ const App = () => {
     const [newCarSold, setNewCarSold] = useState(false)
     const [cars, setCars] = useState([])
 
-    //handlers
+    //Handlers
     const handleNewMakeChange = (event) => {
         setNewCarMake(event.target.value);
     }
