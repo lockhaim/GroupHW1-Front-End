@@ -62,7 +62,7 @@ const App = () => {
     }
 
 // Button to reveal the EDIT Form
-const showEditForm = (carData) => {
+const showEditForm = () => {
   let showForm = document.getElementById(`show-edit-car`)
   if (getComputedStyle(showForm, null).display === "none") {
       showForm.style.display = "block";
@@ -80,7 +80,8 @@ const handleUpdateCar = (carData, event) => {
           model:newCarModel,
           img:newCarImg,
           sold:newCarSold
-        }
+        },
+
     ).then(() => {
       axios
         .get('http://localhost:3000/cars')
@@ -88,6 +89,7 @@ const handleUpdateCar = (carData, event) => {
           setCars(response.data)
         })
     })
+    console.log(carData._id)
     event.currentTarget.reset()
     showEditForm()
 }
@@ -124,9 +126,7 @@ const handleUpdateCar = (carData, event) => {
                           }}>Buy Car</button>
                       }<br/>
 
-                      <button onClick={ (event) =>
-                        { showEditForm(car._id) }
-                      }>Edit</button>
+                      <button onClick={showEditForm}>Edit</button>
 
                       <div id="show-edit-car">
                           <h3>Edit Car</h3>
