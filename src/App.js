@@ -62,14 +62,14 @@ const App = () => {
     }
 
 // Button to reveal the EDIT Form
-const showEditForm = () => {
-  let showForm = document.getElementById(`show-edit-car`)
-  if (getComputedStyle(showForm, null).display === "none") {
-      showForm.style.display = "block";
-    } else {
-      showForm.style.display = "none";
-    }
-}
+// const showEditForm = () => {
+//   let showForm = document.getElement(`show-edit-car`)
+//   if (getComputedStyle(showForm, null).display === "none") {
+//       showForm.style.display = "block";
+//     } else {
+//       showForm.style.display = "none";
+//     }
+// }
 
 // Update/Edit handler
 const handleUpdateCar = (carData, event) => {
@@ -91,7 +91,7 @@ const handleUpdateCar = (carData, event) => {
     })
     console.log(carData._id)
     event.currentTarget.reset()
-    showEditForm()
+    // showEditForm()
 }
 
     return (
@@ -126,9 +126,9 @@ const handleUpdateCar = (carData, event) => {
                           }}>Buy Car</button>
                       }<br/>
 
-                      <button onClick={showEditForm}>Edit</button>
 
-                      <div id="show-edit-car">
+
+                      <div id={car._id}>
                           <h3>Edit Car</h3>
                           <form onSubmit={event => {
                             event.preventDefault()
